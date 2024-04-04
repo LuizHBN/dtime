@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/cliente")
 public class CustomerController {
-    @Autowired
+
     private final CustomerRepository repository;
 
     @Autowired
@@ -29,7 +29,7 @@ public class CustomerController {
     }
 
     @PostMapping("/novo")
-    public void saveCustomer(@RequestBody NewCustomerDTO customerDTO){
+    public void saveCustomer(@RequestBody NewCustomerDTO customerDTO) {
         repository.save(new Customer(customerDTO));
     };
 

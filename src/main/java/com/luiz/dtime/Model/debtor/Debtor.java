@@ -33,5 +33,15 @@ public class Debtor {
     private double totalValue;
     private double remainingValue;
 
+    public Debtor(NewDebtorDTO debtorDTO){
+        this.purchase = debtorDTO.purchase();
+        this.customer = debtorDTO.customer();
+        this.sale = debtorDTO.sale();
+        this.payday_1 = debtorDTO.payday_1();
+        this.payday_2 = debtorDTO.payday_2();
+        this.totalValue = debtorDTO.totalValue();
+        this.remainingValue = debtorDTO.remainingValue();
+    }
+
 
 }

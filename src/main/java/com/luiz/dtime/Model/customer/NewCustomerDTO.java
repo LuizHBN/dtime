@@ -1,6 +1,8 @@
 package com.luiz.dtime.Model.customer;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record NewCustomerDTO(
-                                String name,
-                                String about ) {
+                                @NotBlank String name,
+                                @NotBlank String about ) {
 }

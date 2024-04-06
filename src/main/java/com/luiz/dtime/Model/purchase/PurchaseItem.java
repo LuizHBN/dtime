@@ -30,6 +30,7 @@ public class PurchaseItem {
 
     public PurchaseItem(NewPurchaseItemDTO purchaseItemDTO, Purchase purchase){
         this.setPurchase(purchase);
+        this.setProduct(purchaseItemDTO.product());
         this.setPrice(purchaseItemDTO.price());
         this.setTax(purchaseItemDTO.tax());
         this.setDeliveryTax(purchaseItemDTO.deliveryTax());

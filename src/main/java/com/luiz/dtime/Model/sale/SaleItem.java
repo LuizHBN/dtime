@@ -2,10 +2,7 @@ package com.luiz.dtime.Model.sale;
 
 import com.luiz.dtime.Model.product.Product;
 import com.luiz.dtime.Model.sale.Sale;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -17,6 +14,7 @@ import lombok.*;
 @Entity
 public class SaleItem {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn (name = "sale_id")

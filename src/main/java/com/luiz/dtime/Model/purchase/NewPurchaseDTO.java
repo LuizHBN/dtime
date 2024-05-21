@@ -7,6 +7,6 @@ import java.util.List;
 
 public record NewPurchaseDTO(@NotNull Date date,
                              @NotNull double total,
-                             @NotNull List<NewPurchaseItemDTO> itens) {
+                             @NotNull List<NewPurchaseItemDTO> items) {
 
 }

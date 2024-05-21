@@ -1,8 +1,12 @@
 package com.luiz.dtime.Controller;
 
+import com.luiz.dtime.Model.purchase.NewPurchaseItemDTO;
+import com.luiz.dtime.Model.purchase.Purchase;
+import com.luiz.dtime.Model.purchase.PurchaseItem;
 import com.luiz.dtime.Model.sale.*;
 import com.luiz.dtime.Repository.SaleItemRepository;
 import com.luiz.dtime.Repository.SaleRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,13 +31,15 @@ public class SaleController {
         return saleRepository.findAll(page).map(ReadSaleDTO :: new);
     }
     @PostMapping("/nova")
-    public void saveSale(@RequestBody NewSaleDTO saleDTO, @RequestBody List<NewSaleItemDTO> saleItemDTO){
+    @Transactional
+    public void saveSale(@RequestBody NewSaleDTO saleDTO){
         var sale = new Sale(saleDTO);
         saleRepository.save(sale);
 
-        for (NewSaleItemDTO item : saleItemDTO){
+        for(NewSaleItemDTO item : saleDTO.items()){
             itemRepository.save(new SaleItem(item,sale));
         }
+
 
     }
 }

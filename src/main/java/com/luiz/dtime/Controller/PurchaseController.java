@@ -46,7 +46,7 @@ public class PurchaseController {
         var purchase = new Purchase(purchaseDTO);
         purchaseRepository.save(purchase);
 
-        for(NewPurchaseItemDTO item : purchaseDTO.itens()){
+        for(NewPurchaseItemDTO item : purchaseDTO.items()){
             itemRepository.save(new PurchaseItem(item,purchase));
         }
 

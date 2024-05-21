@@ -1,11 +1,17 @@
 package com.luiz.dtime.Controller;
 
+import com.luiz.dtime.Model.debtor.Debtor;
+import com.luiz.dtime.Model.debtor.NewDebtorDTO;
 import com.luiz.dtime.Model.debtor.ReadDebtorDTO;
+import com.luiz.dtime.Model.purchase.NewPurchaseItemDTO;
+import com.luiz.dtime.Model.purchase.Purchase;
+import com.luiz.dtime.Model.purchase.PurchaseItem;
 import com.luiz.dtime.Repository.DebtorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +26,10 @@ public class DebtorController {
     @GetMapping
     public Page<ReadDebtorDTO> findAllDebtors (Pageable page){
         return repository.findAll(page).map(ReadDebtorDTO :: new);
+    }
+    @PostMapping("/novo")
+    public void saveDebtor(NewDebtorDTO debtorDTO){
+        var debtor = new Debtor(debtorDTO);
+        repository.save(debtor);
     }
 }
